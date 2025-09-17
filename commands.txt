@@ -1,0 +1,38 @@
+- Basic Git Commands
+
+git init → Initialize a new Git repository in the current directory.
+git clone <url> → Copy (clone) an existing remote repository to your local system.
+git status → Display the current state of the repository (changes, staged files, and current branch).
+git add <file> → Add a specific file to the staging area.
+git add . → Add all modified and new files to the staging area.
+git commit -m "message" → Save the staged changes in the local repository with a descriptive commit message.
+git log → View the commit history of the repository.
+git diff → Show the differences between modified files and the last committed version.
+Branching Commands
+
+
+- A branch is an independent line of development that allows you to work 
+on new features or bug fixes without affecting the main codebase.
+
+git branch → List all branches in the repository.
+git branch <name> → Create a new branch with the given name.
+git checkout <branch> → Switch to the specified branch.
+git checkout -b <branch> → Create and switch to a new branch at the same time.
+git merge <branch> → Merge the specified branch into the current branch.
+git branch -d <branch> → Delete the specified branch safely (only if it has been merged).
+git branch -D <branch> → Force delete a branch, regardless of merge status.
+
+
+-Remote Repositories (GitHub)
+
+git remote -v → Show linked remote repositories.
+git remote add origin <url> → Link local repo with GitHub repo.
+git push -u origin main → Push local main branch to GitHub.
+git push → Upload changes to GitHub.
+git pull → Download and merge latest changes from GitHub.
+git fetch → Download changes but don’t merge yet.
+
+
+git reset --soft HEAD~1 
+git reset --mixed HEAD~1 
+git reset --hard HEAD~1 
