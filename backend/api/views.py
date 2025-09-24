@@ -3,7 +3,29 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from .models import costumer
-from .serializers import CostumerSerializer
+from .serializers import CostumerSerializer, RegisterSerializer, MeSerializer
+from rest_framework.views import APIView 
+from rest_framework import permissions   
+
+
+class RegisterView(APIView):
+    """POST /api/auth/register/"""
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = RegisterSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()  # serializer handles set_password
+        return Response(MeSerializer(user).data, status=status.HTTP_201_CREATED)
+
+
+class MeView(APIView):
+    """GET /api/users/me/"""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        return Response(MeSerializer(request.user).data, status=status.HTTP_200_OK)
+
 
 @api_view(["GET", "POST"])
 def costumer_list_create(request):
